@@ -1,0 +1,22 @@
+[
+  {"utterance": "Find me an easy trek near Manali", "intent": "search", "uses_tool": true, "lang": "en"},
+  {"utterance": "What treks do you have in Rishikesh?", "intent": "search", "uses_tool": true, "lang": "en"},
+  {"utterance": "Is the Roopkund trek available next week?", "intent": "availability", "uses_tool": true, "lang": "en"},
+  {"utterance": "Book the Hampta Pass trek for me", "intent": "book", "uses_tool": true, "lang": "en"},
+  {"utterance": "Show me my bookings", "intent": "list_bookings", "uses_tool": true, "lang": "en"},
+  {"utterance": "Cancel my Kedarkantha booking", "intent": "cancel", "uses_tool": true, "lang": "en"},
+  {"utterance": "What is your cancellation policy?", "intent": "faq", "uses_tool": true, "lang": "en"},
+  {"utterance": "What should I pack for a multi-day trek?", "intent": "faq", "uses_tool": true, "lang": "en"},
+  {"utterance": "Mujhe Manali ke paas ek easy trek dikhao", "intent": "search", "uses_tool": true, "lang": "hi"},
+  {"utterance": "Kya Roopkund trek available hai?", "intent": "availability", "uses_tool": true, "lang": "hi"},
+  {"utterance": "Recommend a hard trek in Leh", "intent": "search", "uses_tool": true, "lang": "en"},
+  {"utterance": "How many slots are left on Triund?", "intent": "availability", "uses_tool": true, "lang": "en"},
+  {"utterance": "Do day treks include meals?", "intent": "faq", "uses_tool": true, "lang": "en"},
+  {"utterance": "Can I reschedule my booking?", "intent": "faq", "uses_tool": true, "lang": "en"},
+  {"utterance": "Book Valley of Flowers for two people", "intent": "book", "uses_tool": true, "lang": "en"},
+  {"utterance": "Hi, what can you help me with?", "intent": "chitchat", "uses_tool": false, "lang": "en"},
+  {"utterance": "Thanks, that's all", "intent": "chitchat", "uses_tool": false, "lang": "en"},
+  {"utterance": "What difficulty is the Chopta trek?", "intent": "search", "uses_tool": true, "lang": "en"},
+  {"utterance": "Refund kitne din me aata hai?", "intent": "faq", "uses_tool": true, "lang": "hi"},
+  {"utterance": "Find a moderate trek in Munnar under a week", "intent": "search", "uses_tool": true, "lang": "en"}
+]
