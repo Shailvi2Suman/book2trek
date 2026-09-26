@@ -1,3 +1,4 @@
+![CI](https://github.com/Shailvi2Suman/book2trek/actions/workflows/ci.yml/badge.svg)
 # Book2Trek — Trekking Management Application
 
 A Flask + Jinja2 + SQLite web app for managing treks, trek staff, and trekkers,
