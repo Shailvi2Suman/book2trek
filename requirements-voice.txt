@@ -1,0 +1,22 @@
+# Voice-AI layer requirements (in addition to the base Flask app).
+# Core (needed for the API, RAG, verification, benchmark, and tests):
+Flask==3.0.3
+Flask-SQLAlchemy==3.1.1
+Flask-Login==0.6.3
+PyJWT>=2.8
+numpy>=1.24
+scikit-learn>=1.4
+pytest>=7.4
+ruff>=0.4
+
+# Optional — enable the live pieces:
+#   Caching / async
+redis>=5.0
+celery>=5.3
+#   Real-time voice worker (LiveKit + providers)
+livekit-agents>=0.11
+livekit-plugins-openai>=0.11
+livekit-plugins-deepgram>=0.11
+livekit-plugins-silero>=0.11
+openai>=1.30
+requests>=2.31

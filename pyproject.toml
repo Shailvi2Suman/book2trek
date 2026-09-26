@@ -1,0 +1,18 @@
+[project]
+name = "book2trek"
+version = "1.0.0"
+description = "Book2Trek — trek booking platform with a real-time multilingual LiveKit voice agent (ASR/LLM/RAG/tool-calling/TTS), REST API, and AI-assisted listing verification."
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+filterwarnings = ["ignore::UserWarning"]

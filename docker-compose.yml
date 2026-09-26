@@ -1,0 +1,35 @@
+# Full stack: web+API, Redis (cache + Celery broker), and a Celery worker.
+# The LiveKit voice worker is defined but only runs when you supply keys in .env
+# (it needs OpenAI/Deepgram/LiveKit credentials + audio), so it's off by profile.
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+
+  web:
+    build: .
+    ports: ["5000:5000"]
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/1
+    env_file: [.env]
+    depends_on: [redis]
+
+  worker:
+    build: .
+    command: celery -A book2trek.api.tasks._celery worker --loglevel=info
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/1
+    env_file: [.env]
+    depends_on: [redis]
+
+  # Voice worker — enable with:  docker compose --profile voice up
+  voice:
+    build: .
+    profiles: ["voice"]
+    command: sh -c "pip install --no-cache-dir livekit-agents livekit-plugins-openai livekit-plugins-deepgram livekit-plugins-silero openai && python -m book2trek.agent.voice_agent dev"
+    environment:
+      - API_BASE_URL=http://web:5000
+    env_file: [.env]
+    depends_on: [web]
