@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ trek.name }} - Book2Trek{% endblock %}
+{% block content %}
+<div class="card shadow-sm"><div class="card-body">
+  <h3>{{ trek.name }}</h3>
+  <p class="text-muted">{{ trek.location }} · {{ trek.difficulty }} · {{ trek.duration_days }} days</p>
+  <p>{{ trek.description }}</p>
+  <ul class="list-unstyled">
+    <li><strong>Dates:</strong> {{ trek.start_date.strftime('%d %b %Y') }} – {{ trek.end_date.strftime('%d %b %Y') }}</li>
+    <li><strong>Slots available:</strong> {{ trek.available_slots }}/{{ trek.total_slots }}</li>
+    <li><strong>Status:</strong> <span class="badge bg-secondary">{{ trek.status }}</span></li>
+    <li><strong>Trek Guide:</strong> {{ trek.staff.name if trek.staff else 'To be assigned' }}</li>
+  </ul>
+
+  {% if already_booked %}
+    <p class="text-success fw-bold">You've already booked this trek.</p>
+  {% elif trek.status == 'Open' and trek.available_slots > 0 %}
+    <form method="POST" action="{{ url_for('user_book_trek', trek_id=trek.id) }}">
+      <button class="btn btn-success">Book This Trek</button>
+    </form>
+  {% elif trek.status != 'Open' %}
+    <p class="text-muted">Bookings aren't open for this trek yet.</p>
+  {% else %}
+    <p class="text-danger">Sorry, this trek is fully booked.</p>
+  {% endif %}
+</div></div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Manage Staff - Book2Trek{% endblock %}
+{% block content %}
+<h3 class="mb-3">Trek Staff</h3>
+<form method="GET" class="mb-3 d-flex gap-2">
+  <input type="text" name="q" value="{{ q }}" class="form-control" placeholder="Search by name or ID">
+  <button class="btn btn-outline-secondary">Search</button>
+</form>
+<div class="table-responsive">
+<table class="table table-hover align-middle">
+  <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Actions</th></tr></thead>
+  <tbody>
+  {% for s in staff_list %}
+    <tr>
+      <td>{{ s.id }}</td><td>{{ s.name }}</td><td>{{ s.email }}</td><td>{{ s.phone }}</td>
+      <td><span class="badge bg-secondary">{{ s.status }}</span></td>
+      <td class="d-flex gap-1">
+        {% if s.status == 'pending' %}
+        <form method="POST" action="{{ url_for('admin_approve_staff', staff_id=s.id) }}">
+          <button class="btn btn-sm btn-outline-success">Approve</button>
+        </form>
+        {% endif %}
+        {% if s.status != 'blacklisted' %}
+        <form method="POST" action="{{ url_for('admin_blacklist_staff', staff_id=s.id) }}">
+          <button class="btn btn-sm btn-outline-danger">Blacklist</button>
+        </form>
+        {% endif %}
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="6" class="text-center text-muted">No staff found.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

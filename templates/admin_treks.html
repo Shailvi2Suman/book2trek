@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Manage Treks - Book2Trek{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3>Manage Treks</h3>
+  <a href="{{ url_for('admin_new_trek') }}" class="btn btn-success">+ New Trek</a>
+</div>
+<form method="GET" class="mb-3 d-flex gap-2">
+  <input type="text" name="q" value="{{ q }}" class="form-control" placeholder="Search by name or ID">
+  <button class="btn btn-outline-secondary">Search</button>
+</form>
+<div class="table-responsive">
+<table class="table table-hover align-middle">
+  <thead><tr><th>ID</th><th>Name</th><th>Location</th><th>Difficulty</th><th>Slots</th><th>Status</th><th>Assign Staff</th><th>Actions</th></tr></thead>
+  <tbody>
+  {% for trek in treks %}
+    <tr>
+      <td>{{ trek.id }}</td>
+      <td>{{ trek.name }}</td>
+      <td>{{ trek.location }}</td>
+      <td>{{ trek.difficulty }}</td>
+      <td>{{ trek.available_slots }}/{{ trek.total_slots }}</td>
+      <td><span class="badge bg-secondary">{{ trek.status }}</span></td>
+      <td>
+        <form method="POST" action="{{ url_for('admin_assign_staff', trek_id=trek.id) }}" class="d-flex gap-1">
+          <select name="staff_id" class="form-select form-select-sm">
+            <option value="">Unassigned</option>
+            {% for s in approved_staff %}
+              <option value="{{ s.id }}" {% if trek.assigned_staff_id == s.id %}selected{% endif %}>{{ s.name }}</option>
+            {% endfor %}
+          </select>
+          <button class="btn btn-sm btn-outline-success">Set</button>
+        </form>
+      </td>
+      <td class="d-flex gap-1">
+        <a href="{{ url_for('admin_edit_trek', trek_id=trek.id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
+        <form method="POST" action="{{ url_for('admin_delete_trek', trek_id=trek.id) }}">
+          <button class="btn btn-sm btn-outline-danger">Delete</button>
+        </form>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="8" class="text-center text-muted">No treks found.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

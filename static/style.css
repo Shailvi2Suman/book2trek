@@ -1,0 +1,776 @@
+/* =========================================================
+   BOOK2TREK
+   Trekking Management Application
+   ========================================================= */
+
+:root {
+    --forest: #173b2f;
+    --forest-dark: #0d2920;
+    --forest-light: #285744;
+
+    --sage: #9caf96;
+
+    --sand: #f5f1e8;
+    --cream: #fbfaf6;
+    --white: #ffffff;
+
+    --orange: #d9784a;
+    --orange-dark: #bd5f36;
+
+    --ink: #202622;
+    --muted: #6c756f;
+
+    --border: #e6e3da;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.navbar-brand {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    background: var(--forest) !important;
+    padding: 17px 0;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-brand {
+    color: white !important;
+
+    font-size: 1.65rem;
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+.navbar-brand::before {
+    content: "▲ ";
+    color: var(--orange);
+}
+
+.navbar .nav-link {
+    color: rgba(255, 255, 255, 0.78) !important;
+
+    font-size: 0.95rem;
+    margin-left: 12px;
+
+    transition: 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+    color: white !important;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.book2trek-hero {
+    position: relative;
+
+    min-height: 610px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--forest-dark) 0%,
+            var(--forest) 48%,
+            #35624f 100%
+        );
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.hero-content {
+    position: relative;
+
+    z-index: 5;
+
+    width: 55%;
+
+    padding: 90px 0 120px;
+}
+
+
+.hero-label,
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: var(--orange);
+}
+
+
+.hero-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--orange);
+}
+
+
+.hero-content h1 {
+    margin-top: 22px;
+
+    font-size: clamp(3.5rem, 6vw, 6rem);
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+
+    font-weight: 700;
+}
+
+.hero-content h1 span {
+    color: #d8e2d4;
+}
+
+
+.hero-description {
+    max-width: 570px;
+
+    margin-top: 30px;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 1.1rem;
+
+    line-height: 1.7;
+}
+
+
+.hero-actions {
+    display: flex;
+
+    gap: 14px;
+
+    margin-top: 36px;
+}
+
+
+.btn-book-primary {
+    background: var(--orange);
+
+    color: white;
+
+    border: 2px solid var(--orange);
+
+    padding: 13px 23px;
+
+    border-radius: 7px;
+
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+
+.btn-book-primary:hover {
+    background: var(--orange-dark);
+
+    border-color: var(--orange-dark);
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+
+.btn-book-primary .arrow {
+    margin-left: 12px;
+
+    font-size: 1.1rem;
+}
+
+
+.btn-book-secondary {
+    background: transparent;
+
+    color: white;
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    padding: 13px 23px;
+
+    border-radius: 7px;
+
+    font-weight: 600;
+}
+
+
+.btn-book-secondary:hover {
+    background: white;
+
+    color: var(--forest);
+
+    border-color: white;
+}
+
+
+/* =========================================================
+   HERO MOUNTAINS
+   ========================================================= */
+
+.hero-trail {
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 62%;
+    height: 100%;
+
+    pointer-events: none;
+}
+
+
+.mountain {
+    position: absolute;
+
+    bottom: -100px;
+
+    width: 700px;
+    height: 500px;
+
+    transform: rotate(45deg);
+
+    border-radius: 80px;
+
+    opacity: 0.3;
+}
+
+
+.mountain-back {
+    right: -260px;
+
+    background: #789181;
+}
+
+
+.mountain-middle {
+    right: 70px;
+    bottom: -170px;
+
+    background: #526f60;
+
+    opacity: 0.5;
+}
+
+
+.mountain-front {
+    right: 280px;
+    bottom: -230px;
+
+    background: #304f40;
+
+    opacity: 0.8;
+}
+
+
+.trail-line {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    right: 130px;
+    bottom: -220px;
+
+    border:
+
+        3px solid rgba(217, 120, 74, 0.55);
+
+    border-radius: 50%;
+
+    transform: rotate(-25deg);
+}
+
+
+/* =========================================================
+   HERO GLOW
+   ========================================================= */
+
+.hero-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    opacity: 0.18;
+}
+
+
+.hero-glow-one {
+    width: 300px;
+    height: 300px;
+
+    background: var(--orange);
+
+    right: 20%;
+    top: -100px;
+}
+
+
+.hero-glow-two {
+    width: 400px;
+    height: 400px;
+
+    background: #8eb09a;
+
+    right: -100px;
+    bottom: -150px;
+}
+
+
+/* =========================================================
+   HOW IT WORKS
+   ========================================================= */
+
+.why-section {
+    padding: 100px 0;
+
+    background: var(--cream);
+}
+
+
+.section-heading {
+    max-width: 620px;
+}
+
+
+.section-heading h2,
+.roles-title {
+    margin-top: 14px;
+
+    font-size: 2.8rem;
+
+    letter-spacing: -1.5px;
+
+    color: var(--forest);
+}
+
+
+.section-heading p {
+    color: var(--muted);
+
+    font-size: 1rem;
+
+    line-height: 1.7;
+}
+
+
+.feature-card {
+    position: relative;
+
+    height: 100%;
+
+    padding: 34px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    transition: 0.25s ease;
+}
+
+
+.feature-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 40px rgba(23, 59, 47, 0.08);
+}
+
+
+.featured-card {
+    background: var(--forest);
+
+    color: white;
+
+    border-color: var(--forest);
+}
+
+
+.feature-number {
+    position: absolute;
+
+    top: 25px;
+    right: 27px;
+
+    color: #b9c4bc;
+
+    font-size: 0.75rem;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.featured-card .feature-number {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+.feature-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 25px;
+
+    border-radius: 50%;
+
+    background: var(--sand);
+
+    color: var(--forest);
+
+    font-size: 1.5rem;
+}
+
+
+.featured-card .feature-icon {
+    background: var(--orange);
+
+    color: white;
+}
+
+
+.feature-card h3 {
+    font-size: 1.45rem;
+
+    margin-bottom: 12px;
+}
+
+
+.feature-card p {
+    margin: 0;
+
+    color: var(--muted);
+
+    line-height: 1.65;
+}
+
+
+.featured-card p {
+    color: rgba(255, 255, 255, 0.68);
+}
+
+
+/* =========================================================
+   ROLES
+   ========================================================= */
+
+.roles-section {
+    padding: 100px 0;
+
+    background: var(--sand);
+}
+
+
+.roles-title span {
+    color: var(--orange);
+}
+
+
+.roles-description {
+    max-width: 550px;
+
+    margin-top: 25px;
+
+    color: var(--muted);
+
+    line-height: 1.8;
+}
+
+
+.role-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.role-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px 22px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+}
+
+
+.role-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 44px;
+    height: 44px;
+
+    border-radius: 8px;
+
+    background: var(--forest);
+
+    color: white;
+
+    font-weight: 700;
+}
+
+
+.role-item h4 {
+    margin: 0 0 4px;
+
+    color: var(--forest);
+
+    font-size: 1.05rem;
+}
+
+
+.role-item p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.cta-section {
+    padding: 90px 0;
+
+    background: var(--cream);
+}
+
+
+.cta-card {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 65px;
+
+    border-radius: 14px;
+
+    background: var(--forest);
+
+    text-align: center;
+
+    color: white;
+}
+
+
+.cta-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: var(--orange);
+
+    opacity: 0.1;
+
+    right: -80px;
+    top: -140px;
+}
+
+
+.cta-card h2 {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 14px;
+
+    font-size: 2.8rem;
+}
+
+
+.cta-card p {
+    position: relative;
+
+    z-index: 2;
+
+    margin: 15px auto 30px;
+
+    max-width: 520px;
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================================
+   EXISTING APP COMPONENTS
+   ========================================================= */
+
+.card {
+    border: none;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 2px 10px rgba(23, 59, 47, 0.06);
+}
+
+
+.table {
+    background: white;
+}
+
+
+.stat-card {
+    border-left: 4px solid var(--orange);
+}
+
+
+.badge.bg-secondary {
+    background-color: var(--muted) !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .hero-content {
+        width: 75%;
+    }
+
+    .hero-trail {
+        opacity: 0.45;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .book2trek-hero {
+        min-height: 650px;
+    }
+
+    .hero-content {
+        width: 100%;
+
+        padding: 70px 20px 120px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .hero-trail {
+        width: 100%;
+
+        opacity: 0.25;
+    }
+
+    .section-heading h2,
+    .roles-title,
+    .cta-card h2 {
+        font-size: 2.2rem;
+    }
+
+    .why-section,
+    .roles-section {
+        padding: 70px 0;
+    }
+
+    .cta-card {
+        padding: 45px 25px;
+    }
+
+}

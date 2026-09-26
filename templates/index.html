@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+
+{% block title %}Book2Trek | Discover. Book. Trek.{% endblock %}
+
+{% block content %}
+
+<section class="book2trek-hero">
+
+    <div class="hero-glow hero-glow-one"></div>
+    <div class="hero-glow hero-glow-two"></div>
+
+    <div class="container position-relative">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                <span class="hero-dot"></span>
+                YOUR NEXT ADVENTURE STARTS HERE
+            </div>
+
+            <h1>
+                Find a trail.
+                <br>
+                <span>Make it yours.</span>
+            </h1>
+
+            <p class="hero-description">
+                Discover memorable trekking experiences, book your place,
+                and follow every step of your journey with Book2Trek.
+            </p>
+
+            {% if not current_user.is_authenticated %}
+
+            <div class="hero-actions">
+                <a href="{{ url_for('register') }}" class="btn btn-book-primary">
+                    Explore Treks
+                    <span class="arrow">→</span>
+                </a>
+
+                <a href="{{ url_for('login') }}" class="btn btn-book-secondary">
+                    Sign In
+                </a>
+            </div>
+
+            {% endif %}
+
+        </div>
+
+        <div class="hero-trail">
+
+            <div class="mountain mountain-back"></div>
+            <div class="mountain mountain-middle"></div>
+            <div class="mountain mountain-front"></div>
+
+            <div class="trail-line"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="why-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">HOW IT WORKS</span>
+
+            <h2>
+                From planning to the trail.
+            </h2>
+
+            <p>
+                Everything you need to organize and experience a trek,
+                brought together in one simple platform.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-number">01</div>
+
+                    <div class="feature-icon">
+                        ◇
+                    </div>
+
+                    <h3>Discover</h3>
+
+                    <p>
+                        Explore treks by location and difficulty
+                        and find an adventure that matches you.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="feature-card featured-card">
+
+                    <div class="feature-number">02</div>
+
+                    <div class="feature-icon">
+                        +
+                    </div>
+
+                    <h3>Book</h3>
+
+                    <p>
+                        Reserve your place on an open trek while
+                        the system keeps track of available slots.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-number">03</div>
+
+                    <div class="feature-icon">
+                        ↑
+                    </div>
+
+                    <h3>Trek</h3>
+
+                    <p>
+                        Follow your booking and trek status from
+                        registration all the way to completion.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="roles-section">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <span class="section-label">ONE PLATFORM</span>
+
+                <h2 class="roles-title">
+                    Built for everyone
+                    <span>on the trail.</span>
+                </h2>
+
+                <p class="roles-description">
+                    Book2Trek connects the people behind every trekking
+                    experience — from administrators managing operations
+                    to staff guiding the trek and trekkers joining the journey.
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="role-list">
+
+                    <div class="role-item">
+                        <div class="role-icon">A</div>
+                        <div>
+                            <h4>Admin</h4>
+                            <p>Manage treks, staff, users and bookings.</p>
+                        </div>
+                    </div>
+
+                    <div class="role-item">
+                        <div class="role-icon">S</div>
+                        <div>
+                            <h4>Trek Staff</h4>
+                            <p>Manage assigned treks and participants.</p>
+                        </div>
+                    </div>
+
+                    <div class="role-item">
+                        <div class="role-icon">T</div>
+                        <div>
+                            <h4>Trekker</h4>
+                            <p>Discover, book and track trekking experiences.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="cta-section">
+
+    <div class="container">
+
+        <div class="cta-card">
+
+            <span class="section-label">READY TO GO?</span>
+
+            <h2>
+                Your next trail is waiting.
+            </h2>
+
+            <p>
+                Create your account and start exploring trekking experiences.
+            </p>
+
+            {% if not current_user.is_authenticated %}
+
+            <a href="{{ url_for('register') }}" class="btn btn-book-primary">
+                Start Exploring
+                <span class="arrow">→</span>
+            </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

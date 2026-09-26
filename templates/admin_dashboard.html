@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard - Book2Trek{% endblock %}
+{% block content %}
+<h3 class="mb-4">Admin Dashboard</h3>
+<div class="row g-3">
+  <div class="col-md-3">
+    <div class="card stat-card shadow-sm"><div class="card-body">
+      <h6 class="text-muted mb-1">Total Treks</h6><h2>{{ total_treks }}</h2>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card stat-card shadow-sm"><div class="card-body">
+      <h6 class="text-muted mb-1">Trek Staff</h6><h2>{{ total_staff }}</h2>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card stat-card shadow-sm"><div class="card-body">
+      <h6 class="text-muted mb-1">Trekkers</h6><h2>{{ total_users }}</h2>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card stat-card shadow-sm"><div class="card-body">
+      <h6 class="text-muted mb-1">Total Bookings</h6><h2>{{ total_bookings }}</h2>
+    </div></div>
+  </div>
+</div>
+<div class="mt-4 d-flex gap-2">
+  <a href="{{ url_for('admin_treks') }}" class="btn btn-success">Manage Treks</a>
+  <a href="{{ url_for('admin_staff') }}" class="btn btn-outline-success">Manage Staff</a>
+  <a href="{{ url_for('admin_users') }}" class="btn btn-outline-success">Manage Users</a>
+</div>
+{% endblock %}

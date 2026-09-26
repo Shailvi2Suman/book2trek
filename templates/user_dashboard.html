@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - Book2Trek{% endblock %}
+{% block content %}
+<h3 class="mb-3">Welcome, {{ current_user.name }}</h3>
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card stat-card shadow-sm"><div class="card-body">
+      <h6 class="text-muted mb-1">Open Treks</h6><h2>{{ available_treks }}</h2>
+      <a href="{{ url_for('user_treks') }}">Browse &rarr;</a>
+    </div></div>
+  </div>
+  <div class="col-md-4">
+    <div class="card stat-card shadow-sm"><div class="card-body">
+      <h6 class="text-muted mb-1">My Active Bookings</h6><h2>{{ my_bookings|length }}</h2>
+      <a href="{{ url_for('user_bookings') }}">View &rarr;</a>
+    </div></div>
+  </div>
+</div>
+<h5>Recent Activity</h5>
+<div class="table-responsive">
+<table class="table">
+  <thead><tr><th>Trek</th><th>Booked On</th><th>Status</th></tr></thead>
+  <tbody>
+  {% for b in recent_bookings %}
+    <tr><td>{{ b.trek.name }}</td><td>{{ b.booking_date.strftime('%d %b %Y') }}</td><td><span class="badge bg-secondary">{{ b.status }}</span></td></tr>
+  {% else %}
+    <tr><td colspan="3" class="text-center text-muted">No bookings yet — go find a trek!</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

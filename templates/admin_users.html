@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Manage Users - Book2Trek{% endblock %}
+{% block content %}
+<h3 class="mb-3">Trekkers</h3>
+<form method="GET" class="mb-3 d-flex gap-2">
+  <input type="text" name="q" value="{{ q }}" class="form-control" placeholder="Search by name or ID">
+  <button class="btn btn-outline-secondary">Search</button>
+</form>
+<div class="table-responsive">
+<table class="table table-hover align-middle">
+  <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Actions</th></tr></thead>
+  <tbody>
+  {% for u in users_list %}
+    <tr>
+      <td>{{ u.id }}</td><td>{{ u.name }}</td><td>{{ u.email }}</td><td>{{ u.phone }}</td>
+      <td><span class="badge bg-secondary">{{ u.status }}</span></td>
+      <td>
+        <form method="POST" action="{{ url_for('admin_blacklist_user', user_id=u.id) }}">
+          <button class="btn btn-sm {{ 'btn-outline-success' if u.status == 'blacklisted' else 'btn-outline-danger' }}">
+            {{ 'Unblacklist' if u.status == 'blacklisted' else 'Blacklist' }}
+          </button>
+        </form>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="6" class="text-center text-muted">No users found.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

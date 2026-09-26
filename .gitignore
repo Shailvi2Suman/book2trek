@@ -1,0 +1,14 @@
+venv/
+__pycache__/
+*.pyc
+instance/
+*.db
+.env
+
+# Voice-AI layer
+.env
+*.db
+instance/*.db
+__pycache__/
+.pytest_cache/
+.ruff_cache/

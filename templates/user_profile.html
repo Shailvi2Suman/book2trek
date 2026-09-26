@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}My Profile - Book2Trek{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm"><div class="card-body">
+      <h4 class="mb-3">My Profile</h4>
+      <form method="POST">
+        <div class="mb-2">
+          <label class="form-label">Name</label>
+          <input type="text" name="name" class="form-control" value="{{ current_user.name }}" required>
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" value="{{ current_user.email }}" disabled>
+          <div class="form-text">Email can't be changed.</div>
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Phone</label>
+          <input type="text" name="phone" class="form-control" value="{{ current_user.phone or '' }}">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">New Password</label>
+          <input type="password" name="password" class="form-control" placeholder="Leave blank to keep current password">
+        </div>
+        <button class="btn btn-success">Save Changes</button>
+      </form>
+    </div></div>
+  </div>
+</div>
+{% endblock %}
